@@ -30,7 +30,7 @@ jobs:
           profile: minimal
           toolchain: stable
           target: wasm32-unknown-unknown
-      - uses: jetli/wasm-pack-action@v0.4.0
+      - uses: jetli/trunk-action@v0.4.0
         with:
           version: 'latest'
       - uses: actions/checkout@v4
@@ -40,11 +40,11 @@ jobs:
       - name: Build with cargo
         run: cargo build --release --target wasm32-unknown-unknown
       - name: Build wasm
-        run: wasm-pack build
+        run: trunk build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./dist
 
   # Deployment job
   deploy:
