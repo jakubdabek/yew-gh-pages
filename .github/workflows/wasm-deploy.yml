@@ -29,6 +29,11 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          target: wasm32-unknown-unknown
       - name: Build with cargo
         run: cargo build --release --target wasm32-unknown-unknown
       - name: Build wasm
